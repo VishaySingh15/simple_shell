@@ -3,8 +3,11 @@
 #include <stdlib.h>
 #include "shell.h"
 
-/*
- * Tokenizes the string (splits words based on space character) and sends to eval
+/**
+ * parse - Tokenizes the string (splits words based on
+ * space character) and sends to eval.
+ * @command: command to be tokenized.
+ * Return: 0.
  */
 
 void parse(char *command)
@@ -24,12 +27,11 @@ void parse(char *command)
 		token = strtok(NULL, delim);
 		(cmd_struct->argv)[cmd_struct->argc] =  token;
 	}
-	/* Ensure Command is tokenized
-	while (cmd_struct->argv[count] != NULL)
-	{
-		printf("%s\n", cmd_struct->argv[count]);
-		count++;
-	}
+	/**
+	 * Ensure Command is tokenized
+	 * while (cmd_struct->argv[count] != NULL){
+	 * printf("%s\n", cmd_struct->argv[count]);
+	 * count++;}
 	*/
 	eval(cmd_struct);
 }

@@ -22,6 +22,13 @@ int _strcmp(char *s1, char *s2)
 	return (op);
 }
 
+/**
+ * get_env_var - gets environment variable.
+ * @environ: environment parameter.
+ * @var: variable parameter.
+ * Return: environment variable.
+ */
+
 char *get_env_var(char **environ, char *var)
 {
 	int count = 0;
@@ -31,11 +38,18 @@ char *get_env_var(char **environ, char *var)
 	{
 		ret_var = check_var(env_var, var);
 		if (ret_var)
-			return(ret_var);
+			return (ret_var);
 		count++;
 	}
 	return (NULL);
 }
+
+/**
+ * check_var - checks environment variable.
+ * @env_var: environment variable parameter.
+ * @var: variable parameter.
+ * Return: environmen variable
+ */
 
 char *check_var(char *env_var, char *var)
 {
@@ -51,6 +65,12 @@ char *check_var(char *env_var, char *var)
 	}
 	return (&env_var[letter + 1]);
 }
+
+/**
+ * handle_path - handles PATH.
+ * @cmd_struct: command structure.
+ * Return: void.
+ */
 
 void handle_path(cmd *cmd_struct)
 {
@@ -80,7 +100,7 @@ char *_strcat(char *dest, char *src)
 {
 	int len_dest = 0, len_src = 0;
 
-	while(dest[len_dest] != 0)
+	while (dest[len_dest] != 0)
 	{
 		len_dest++;
 	}

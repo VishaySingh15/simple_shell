@@ -4,10 +4,9 @@
 /**
  * eval - Determines whether the command is builtin,
  * system or invalid and takes action.
+ * @cmd_struct: command structure.
  * Return: void.
  */
-
-extern char **environ;
 
 void eval(cmd *cmd_struct)
 {

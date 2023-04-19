@@ -5,18 +5,22 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
-/*
- * This structure holds all arguments and is most important.
+/**
+ * struct cmd - holds all arguments and is most important.
+ * cmd: command.
+ * Description: structure for commands.
  */
 typedef struct cmd
 {
 	int argc;
 	char *argv[MAXARGS];
-}cmd;
+} cmd;
 
-/*
- * This structure defines what our builtin functions
- * should contain
+/**
+ * struct builtins - defines what our builtin functions
+ * @instructions: instructions
+ * @func: function.
+ * Descriiption: structure or builtin commands.
  */
 typedef struct builtins
 {
@@ -39,5 +43,8 @@ char *_strcat(char *dest, char *src);
 
 /* Helpers */
 int check_file(char *file);
+char **environ;
+const char *prompt = "myshell> ";
+size_t nbytes = sizeof(prompt), line_size = 1024;
 
 #endif
