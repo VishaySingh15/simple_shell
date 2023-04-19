@@ -1,72 +1,56 @@
-#include "main.h"
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/wait.h>
+#include "shell.h"
 
-/**
-  * main - Entry Point.
-  * @ac: argument count.
-  * @argv: argument vector.
-  * Return: 0.
-  */
+const char *prompt = "myshell> ";
+size_t nbytes = sizeof(prompt), line_size = 1024;
 
-int main(int ac, char **argv)
+int main()
 {
-	char *prompt = "(simple_shell) $ ";
-	char *lineptr = NULL;
-	char copy_lineptr = NULL;
-	const char *delim = " \n";
-	size_t n = 0;
-	ssize_t read_chars;
-	char *token;
-	int token_number = 0;
-	int i;
+	int nread;
+	char *command =  malloc(3);
+	/*pid_t child_pid;*/
 
-	(void)ac;
-
-/* this is a loop for the promt */
 	while (1)
 	{
-		printf("%s", prompt);
-		read_chars = getline(&lineptr, &n, stdin);
-		if (read_chars == -1)
+		write(STDIN_FILENO, prompt, nbytes);
+		nread = getline(&command, &line_size, stdin);
+		if (nread == -1)
 		{
-			printf("Exiting simple shell...\n");
-			return (-1);
+			perror("Goodbye!");
+			exit(0);
 		}
-
-		/* allocates space for the copy of lineptr */
-		copy_lineptr = malloc(sizeof(char) * read_chars);
-		if (copy_lineptr == NULL)
+		else if (nread > 1)
 		{
-			perror("memory allocation error");
-			return (-1);
+			command[nread - 1] = '\0';
+			if (command)
+				parse(command);
 		}
-		strcpy(char copy_lineptr, lineptr);
-
-		/* this splits the string into and array of tokens */
-		/* this calculates the total number of tokens */
-		token = strtok(lintptr, delim);
-		while (token != NULL)
+		
+		/*
+		 * Fork process to allow parsing, evaluation and
+		 * execution to occur first. Then only prompt
+		 * a user for a new command. 
+		 */
+		/*
+		if ((child_pid = fork()) < 0)
 		{
-			token_number++;
-			token = strtok(lineptr, delim);
+			perror("Fork Error");
+			exit(1);
 		}
-		token_number++;
-
-		/* allocates space to hold the array of strings */
-		argv = malloc(sizeof(char) * token_number);
-
-		/* stores each token in the argv array */
-		token = strtok(char copy_lineptr, delim);
-
-		for (i = 0, token != NULL, i++)
+		else if (child_pid == 0)
 		{
-			argv[i] = malloc(sizeof(char) * strlen(token));
-			strcpy(argv[i], token);
-			token = strtok(NULL, delim);
+			parse(command);
+			break;
 		}
-		argv[i] = NULL;
+		else
+		{
+			wait (&child_pid);
+		}
+		*/
 
-		printf("%s\n", lineptr);
-		free(lineptr);
 	}
-	return (0);
+		
 }
