@@ -4,8 +4,10 @@
 #include <sys/wait.h>
 #include "shell.h"
 
-/*
- * Executes system calls
+/**
+ * execute - Executes system calls
+ * @cmd_struct: command structure
+ * Return: void.
  */
 
 void execute(cmd *cmd_struct)
@@ -15,30 +17,30 @@ void execute(cmd *cmd_struct)
 
 	if (check_file(file_path))
 	{
-		if ((child_pid = fork()) < 0)
+		while ((child_pid = fork()) < 0)
 		{
 			perror("Fork Error");
 			exit(1);
 		}
-		//In child process therefore, execute command
-		else if (child_pid == 0)
+		/* In child process therefore, execute command */
+		if (child_pid == 0)
 		{
-			// Check if command is recognized by system
+			/* Check if command is recognized by system */
 			if (execve(cmd_struct->argv[0], cmd_struct->argv, NULL) < 0)
 			{
 				perror("Unrecognized command");
 				exit(1);
 			}
 		}
-		// I am in parent process
+		/* I am in parent process */
 		else
 		{
-			// Wait for child to finish
+			/* Wait for child to finish */
 			wait(&child_pid);
 		}
 	}
 	else if (execve(cmd_struct->argv[0], cmd_struct->argv, NULL) < 0)
 	{
 		perror("Unrecognized command");
-	}	
+	}
 }

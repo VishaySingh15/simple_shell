@@ -1,6 +1,9 @@
 #include "shell.h"
-/*
- * Example of a builtin function
+/**
+ * my_cd - handles cd command.
+ * @cmd_struct: command structure.
+ * @environ: environment variable.
+ * Return: void.
  */
 void my_cd(cmd *cmd_struct, char **environ)
 {

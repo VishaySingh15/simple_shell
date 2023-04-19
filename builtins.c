@@ -1,9 +1,11 @@
 #include "shell.h"
 #include <stdio.h>
-/*
- * Framework for how builtins can be used
+/**
+ * is_builtin - checks if command is a built in command.
+ * @command: command to be checked.
+ * Return: 0.
  */
-void (*is_builtin(char *command))(cmd *cmd_struct, char **environ)
+void (*is_builtin(char *command))(cmd * cmd_struct, char **environ)
 {
 	int count;
 
