@@ -22,8 +22,7 @@ int main(void)
 		nread = getline(&command, &line_size, stdin);
 		if (nread == -1)
 		{
-			perror("Goodbye!");
-			exit(0);
+			return (0);
 		}
 		else if (nread > 1)
 		{
