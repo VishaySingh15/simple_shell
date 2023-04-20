@@ -14,6 +14,7 @@ typedef struct cmd
 {
 	int argc;
 	char *argv[MAXARGS];
+	char **env;
 } cmd;
 
 /**
@@ -25,13 +26,15 @@ typedef struct cmd
 typedef struct builtins
 {
 	char *instruction;
-	void (*func)(cmd*, char**);
+	void (*func)(cmd*);
 } builtins_table;
 
-void parse(char *command);
+void parse(char *command, char **env);
 void execute(struct cmd *cmd_struct);
-void (*is_builtin(char *command))(cmd *cmd_struct, char **environ);
-void my_cd(cmd *cmd_struct, char **environ);
+void (*is_builtin(char *command))(cmd *cmd_struct);
+void my_cd(cmd *cmd_struct);
+void my_exit(cmd *cmd_struct);
+void my_env(cmd *cmd_struct);
 void eval(cmd *cmd_struct);
 
 /* String functions that we can write to assist us */
@@ -43,8 +46,4 @@ char *_strcat(char *dest, char *src);
 
 /* Helpers */
 int check_file(char *file);
-char **environ;
-const char *prompt = "myshell> ";
-size_t nbytes = sizeof(prompt), line_size = 1024;
-
 #endif

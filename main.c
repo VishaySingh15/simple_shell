@@ -13,7 +13,9 @@ int main(void)
 {
 	int nread;
 	char *command =  malloc(3);
-	/*pid_t child_pid;*/
+	const char *prompt = "myshell> ";
+	size_t nbytes = sizeof(prompt), line_size = 1024;
+	extern char **environ;
 
 	while (1)
 	{
@@ -28,20 +30,7 @@ int main(void)
 		{
 			command[nread - 1] = '\0';
 			if (command)
-				parse(command);
+				parse(command, environ);
 		}
-		/*
-		 * Fork process to allow parsing, evaluation and
-		 * execution to occur first. Then only prompt
-		 * a user for a new command.
-		 * if ((child_pid = fork()) < 0){
-		 * perror("Fork Error");
-		 * exit(1);}
-		 * else if (child_pid == 0){
-		 * parse(command);
-		 * break; }
-		 * else{
-		 * wait (&child_pid);}
-		 */
 	}
 }

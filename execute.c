@@ -26,7 +26,7 @@ void execute(cmd *cmd_struct)
 		if (child_pid == 0)
 		{
 			/* Check if command is recognized by system */
-			if (execve(cmd_struct->argv[0], cmd_struct->argv, NULL) < 0)
+			if (execve(cmd_struct->argv[0], cmd_struct->argv, cmd_struct->env) < 0)
 			{
 				perror("Unrecognized command");
 				exit(1);

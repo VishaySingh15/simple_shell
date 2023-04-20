@@ -5,17 +5,20 @@
  * @command: command to be checked.
  * Return: 0.
  */
-void (*is_builtin(char *command))(cmd * cmd_struct, char **environ)
+void (*is_builtin(char *command))(cmd * cmd_struct)
 {
 	int count;
+	char *builtin_command;
 
 	builtins_table my_builtins[] = {
-		{"cd", my_cd},
+		{"exit", my_exit},
+		{"env", my_env},
 		{NULL, NULL}
 	};
 	for (count = 0; my_builtins[count].instruction; count++)
 	{
-		if (_strcmp(my_builtins[count].instruction, command) == 0)
+		builtin_command = my_builtins[count].instruction;
+		if (_strcmp(builtin_command, command) == 0)
 		{
 			return (my_builtins[count].func);
 		}

@@ -10,7 +10,7 @@
  * Return: 0.
  */
 
-void parse(char *command)
+void parse(char *command, char **env)
 {
 	cmd *cmd_struct = malloc(sizeof(cmd));
 	char *token;
@@ -27,6 +27,7 @@ void parse(char *command)
 		token = strtok(NULL, delim);
 		(cmd_struct->argv)[cmd_struct->argc] =  token;
 	}
+	cmd_struct->env = env;
 	/**
 	 * Ensure Command is tokenized
 	 * while (cmd_struct->argv[count] != NULL){
