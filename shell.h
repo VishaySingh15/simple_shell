@@ -5,9 +5,15 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
+
+extern char **environ;
+
 /**
  * struct cmd - holds all arguments and is most important.
  * cmd: command.
+ * @argc: number of args
+ * @argv: array of pointers to args
+ * @env: array of pointers to env vars
  * Description: structure for commands.
  */
 typedef struct cmd
@@ -19,14 +25,14 @@ typedef struct cmd
 
 /**
  * struct builtins - defines what our builtin functions
- * @instructions: instructions
+ * @instruction: instructions
  * @func: function.
  * Descriiption: structure or builtin commands.
  */
 typedef struct builtins
 {
 	char *instruction;
-	void (*func)(cmd*);
+	void (*func)(cmd *);
 } builtins_table;
 
 void parse(char *command, char **env);

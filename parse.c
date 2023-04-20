@@ -7,7 +7,8 @@
  * parse - Tokenizes the string (splits words based on
  * space character) and sends to eval.
  * @command: command to be tokenized.
- * Return: 0.
+ * @env: global environment
+ * Return: no return
  */
 
 void parse(char *command, char **env)

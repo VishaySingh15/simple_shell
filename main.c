@@ -15,7 +15,6 @@ int main(void)
 	char *command =  malloc(3);
 	const char *prompt = "myshell> ";
 	size_t nbytes = sizeof(prompt), line_size = 1024;
-	extern char **environ;
 
 	while (1)
 	{

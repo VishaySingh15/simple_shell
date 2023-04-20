@@ -1,7 +1,6 @@
 #include "shell.h"
 #include <stdio.h>
 
-extern char **environ;
 /**
  * eval - Determines whether the command is builtin,
  * system or invalid and takes action.

@@ -5,7 +5,7 @@
 /**
  * check_file - checks the file.
  * @file: file to be checked.
- * Return: 0.
+ * Return: 1 if file found, 0 otherwise
  */
 
 int check_file(char *file)

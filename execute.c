@@ -7,7 +7,7 @@
 /**
  * execute - Executes system calls
  * @cmd_struct: command structure
- * Return: void.
+ * Return: no return
  */
 
 void execute(cmd *cmd_struct)

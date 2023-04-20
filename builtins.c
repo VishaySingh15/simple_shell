@@ -3,7 +3,7 @@
 /**
  * is_builtin - checks if command is a built in command.
  * @command: command to be checked.
- * Return: 0.
+ * Return: function pointer
  */
 void (*is_builtin(char *command))(cmd * cmd_struct)
 {
