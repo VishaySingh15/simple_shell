@@ -5,11 +5,12 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
+
 /**
- * struct cmd - holds all arguments and is most important.
- * cmd: command.
- * Description: structure for commands.
+ * cmd - typedef for commands
+ * Description: a typedef for commands that are not built in.
  */
+
 typedef struct cmd
 {
 	int argc;
@@ -17,11 +18,12 @@ typedef struct cmd
 } cmd;
 
 /**
- * struct builtins - defines what our builtin functions
- * @instructions: instructions
- * @func: function.
- * Descriiption: structure or builtin commands.
+ * builtins - typedef for builtin commands.
+ * @instructions: builtin command instructions.
+ * @func: builtin command function.
+ * Description: a typedef for built in commands.
  */
+
 typedef struct builtins
 {
 	char *instruction;
