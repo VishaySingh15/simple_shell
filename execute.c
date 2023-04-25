@@ -13,6 +13,7 @@ void execute(cmd *cmd_struct, char *newpath)
 	char err[] = ": 1: ";
 	size_t err_size = sizeof(err), home_size;
 
+	printf("in execution");
 	home_size = get_len(cmd_struct->home);
 	if (check_file(newpath))
 	{
