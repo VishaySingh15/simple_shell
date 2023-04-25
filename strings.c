@@ -84,8 +84,8 @@ char *handle_path(cmd *cmd_struct)
 		if (cmd_struct->argv[0][count] != checkpath[count])
 		{
 			new_path = _strcat(checkpath, cmd_struct->argv[0]);
-			printf("checkpath from handle path function %s", checkpath);
-			return (new_path);
+			printf("new_path from handle path function %s", new_path);
+			return (checkpath);
 		}
 		count++;
 	}
