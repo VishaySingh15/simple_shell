@@ -17,13 +17,13 @@ void execute(cmd *cmd_struct)
 
 	if (check_file(cmd_struct->argv[0]))
 	{
-		while ((child_pid = fork()) < 0)
+		if ((child_pid = fork()) < 0)
 		{
 			perror("Fork Error");
 			exit(1);
 		}
 		/* In child process therefore, execute command */
-		if (child_pid == 0)
+		else if (child_pid == 0)
 		{
 			/* Check if command is recognized by system */
 			if (execve(cmd_struct->argv[0], cmd_struct->argv, cmd_struct->env) < 0)
