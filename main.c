@@ -22,7 +22,7 @@ int main(void)
 		nread = getline(&command, &line_size, stdin);
 		if (nread == -1)
 		{
-			free (command);
+			free(command);
 			return (0);
 		}
 		else if (nread > 1)
@@ -30,7 +30,7 @@ int main(void)
 			command[nread - 1] = '\0';
 			if (command)
 				parse(command, environ);
-			free (command);
+			free(command);
 		}
 	}
 }
