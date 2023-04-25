@@ -13,9 +13,9 @@
 void execute(cmd *cmd_struct)
 {
 	pid_t child_pid;
-	char *file_path = cmd_struct->argv[0];
+	/*char *file_path = cmd_struct->argv[0];*/
 
-	if (check_file(file_path))
+	if (check_file(cmd_struct->argv[0]))
 	{
 		while ((child_pid = fork()) < 0)
 		{
