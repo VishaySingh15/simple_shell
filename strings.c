@@ -74,19 +74,21 @@ char *check_var(char *env_var, char *var)
  * Return: void.
  */
 
-void handle_path(cmd *cmd_struct, char *checkpath)
+char *handle_path(cmd *cmd_struct, char *checkpath)
 {
 	int count = 0;
+	char *new_path;
 
 	while (count < 4)
 	{
 		if (cmd_struct->argv[0][count] != checkpath[count])
 		{
-			_strcat(checkpath, cmd_struct->argv[0]);
-			break;
+			new_path = _strcat(checkpath, cmd_struct->argv[0]);
+			return (new_path);
 		}
 		count++;
 	}
+	return (cmd_struct->argv[0]);
 }
 
 /**
@@ -97,7 +99,7 @@ void handle_path(cmd *cmd_struct, char *checkpath)
  * Return: dest - string pointer to destination
  */
 
-void _strcat(char *dest, char *src)
+char *_strcat(char *dest, char *src)
 {
 	int len_dest = 0, len_src = 0;
 
@@ -112,4 +114,5 @@ void _strcat(char *dest, char *src)
 		len_src++;
 	}
 	dest[len_dest] = 0;
+	return (dest);
 }
