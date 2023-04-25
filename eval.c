@@ -13,6 +13,7 @@ void eval(cmd *cmd_struct)
 
 	void (*func)(cmd *cmd_struct) = is_builtin(cmd_struct->argv[0]);
 
+	printf("evaluated");
 	if (func)
 	{
 		func(cmd_struct);
