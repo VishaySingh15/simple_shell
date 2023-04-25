@@ -16,6 +16,7 @@ void parse(char *command, char **env)
 	cmd *cmd_struct = malloc(sizeof(cmd));
 	char *token;
 	const char *delim = " ";
+	int count = 0;
 
 	cmd_struct->argc = 0;
 	/* Tokenize command string */
@@ -36,4 +37,10 @@ void parse(char *command, char **env)
 	 * count++;}
 	*/
 	eval(cmd_struct);
+	while (cmd_struct->argv[count])
+	{
+		free(cmd_struct->argv[count]);
+		count++;
+	}
+	free(cmd_struct);
 }
