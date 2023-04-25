@@ -21,3 +21,14 @@ int check_file(char *file)
 		return (0);
 	}
 }
+
+int get_len(char *s)
+{
+	int count = 0;
+
+	while (s[count] != 0)
+	{
+		count++;
+	}
+	return (count);
+}
