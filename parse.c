@@ -8,6 +8,7 @@
  * space character) and sends to eval.
  * @command: command to be tokenized.
  * @env: global environment
+ * @home: filename of executable
  * Return: no return
  */
 
