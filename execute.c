@@ -13,8 +13,8 @@
 void execute(cmd *cmd_struct, char *new_path)
 {
 	pid_t child_pid;
-	char err[] = ": 1: ";
-	size_t err_size = sizeof(err), home_size;
+	char err[] = ": 1: ", home[] = cmd_struct->home;
+	size_t err_size = sizeof(err), home_size = sizeof(home);;
 	/*char *file_path = cmd_struct->argv[0];*/
 
 	if (check_file(new_path))
@@ -30,7 +30,6 @@ void execute(cmd *cmd_struct, char *new_path)
 			/* Check if command is recognized by system */
 			if (execve(new_path, cmd_struct->argv, cmd_struct->env) < 0)
 			{
-				home_size = sizeof(*cmd_struct->home);
 				write(STDIN_FILENO, cmd_struct->home, home_size);
 				write(STDIN_FILENO, err, err_size);
 				/*perror(cmd_struct->argv[0]);*/
