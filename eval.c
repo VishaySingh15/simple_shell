@@ -20,7 +20,6 @@ void eval(cmd *cmd_struct)
 	else
 	{
 		handle_path(cmd_struct, checkpath);
-		printf("Path from eval %s", checkpath);
 		execute(cmd_struct, checkpath);
 	}
 }
