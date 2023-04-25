@@ -6,6 +6,8 @@
 
 /**
  * main - Entry point
+ * @argc - number of arguments
+ * array of pointers to arguments
  * Return: void.
  */
 
@@ -18,7 +20,7 @@ int main(int argc, char **argv)
 
 	if (argc > 1)
 	{
-		exit (0);
+		exit(0);
 	}
 	while (1)
 	{
