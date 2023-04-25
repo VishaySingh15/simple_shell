@@ -10,6 +10,8 @@
 
 void eval(cmd *cmd_struct)
 {
+	char *new_path;
+
 	void (*func)(cmd *cmd_struct) = is_builtin(cmd_struct->argv[0]);
 
 	if (func)
@@ -18,7 +20,7 @@ void eval(cmd *cmd_struct)
 	}
 	else
 	{
-		handle_path(cmd_struct);
-		execute(cmd_struct);
+		new_path = handle_path(cmd_struct);
+		execute(cmd_struct, new_path);
 	}
 }
