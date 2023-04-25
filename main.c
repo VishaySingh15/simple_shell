@@ -22,7 +22,6 @@ int main(void)
 		nread = getline(&command, &line_size, stdin);
 		if (nread == -1)
 		{
-			free(command);
 			return (0);
 		}
 		else if (nread > 1)
