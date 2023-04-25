@@ -71,6 +71,7 @@ char *check_var(char *env_var, char *var)
 /**
  * handle_path - handles PATH.
  * @cmd_struct: command structure.
+ * @checkpath: filename for command
  * Return: void.
  */
 
