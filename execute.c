@@ -10,7 +10,7 @@
 void execute(cmd *cmd_struct, char *newpath)
 {
 	pid_t child_pid;
-	char err[] = ": 1: ", err2[] = ": ", not_found[] = "not found";
+	char err[] = ": 1: ", err2[] = ": ", not_found[] = "not found\n";
 	size_t err_size = sizeof(err), home_size, err2_size = sizeof(err2), comm_size;
 	size_t f_size = sizeof(not_found);
 
