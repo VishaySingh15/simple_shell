@@ -18,7 +18,7 @@ int main(void)
 
 	while (1)
 	{
-		command = malloc(100)
+		command = malloc(100);
 		write(STDIN_FILENO, prompt, nbytes);
 		nread = getline(&command, &line_size, stdin);
 		if (nread == -1)
