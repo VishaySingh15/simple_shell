@@ -36,7 +36,7 @@ typedef struct builtins
 	void (*func)(cmd *);
 } builtins_table;
 
-void parse(char *command, char **env);
+void parse(char *command, char **env, char *home);
 void execute(struct cmd *cmd_struct, char *new_path);
 void (*is_builtin(char *command))(cmd *cmd_struct);
 void my_cd(cmd *cmd_struct);
