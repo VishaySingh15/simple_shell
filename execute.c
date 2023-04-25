@@ -17,6 +17,7 @@ void execute(cmd *cmd_struct, char *new_path)
 	size_t err_size = sizeof(err), home_size;
 	/*char *file_path = cmd_struct->argv[0];*/
 
+	printf("Path from execute %s", new_path);
 	home_size = get_len(cmd_struct->home);
 	if (check_file(new_path))
 	{
