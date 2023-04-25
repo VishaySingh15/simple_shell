@@ -29,6 +29,7 @@ int main(void)
 			command[nread - 1] = '\0';
 			if (command)
 				parse(command, environ);
+				free (command);
 		}
 	}
 }
