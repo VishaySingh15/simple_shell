@@ -21,6 +21,7 @@ typedef struct cmd
 	int argc;
 	char *argv[MAXARGS];
 	char **env;
+	char *home;
 } cmd;
 
 /**
