@@ -52,7 +52,7 @@ int _strcmp(char *s1, char *s2);
 char *get_env_var(char **environ, char *var);
 char *check_var(char *env_var, char *var);
 void *handle_path(cmd *cmd_struct, char *checkpath);
-void *_strcat(char *dest, char *src);
+void _strcat(char *dest, char *src);
 
 /* Helpers */
 int check_file(char *file);
