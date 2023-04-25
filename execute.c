@@ -17,7 +17,7 @@ void execute(cmd *cmd_struct)
 
 	if (check_file(cmd_struct->argv[0]))
 	{
-		if ((child_pid = fork()) < 0)
+		while ((child_pid = fork()) < 0)
 		{
 			perror("Fork Error");
 			exit(1);
