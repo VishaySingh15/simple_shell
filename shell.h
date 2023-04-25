@@ -53,5 +53,5 @@ char *_strcat(char *dest, char *src);
 
 /* Helpers */
 int check_file(char *file);
-int get_len(char *s)
+size_t get_len(char *s)
 #endif
