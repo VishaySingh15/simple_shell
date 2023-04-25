@@ -21,10 +21,7 @@ void execute(cmd *cmd_struct, char *new_path)
 	{
 		while ((child_pid = fork()) < 0)
 		{
-			home_size = sizeof(cmd_struct->home);
-			write(STDIN_FILENO, cmd_struct->home, home_size);
-			write(STDIN_FILENO, err, err_size);
-			perror(cmd_struct->argv[0]);
+			perror("fork error);
 			exit(1);
 		}
 		/* In child process therefore, execute command */
@@ -33,8 +30,10 @@ void execute(cmd *cmd_struct, char *new_path)
 			/* Check if command is recognized by system */
 			if (execve(new_path, cmd_struct->argv, cmd_struct->env) < 0)
 			{
-				write(
-				perror("Unrecognized");
+				home_size = sizeof(cmd_struct->home);
+				write(STDIN_FILENO, cmd_struct->home, home_size);
+				write(STDIN_FILENO, err, err_size);
+				perror(cmd_struct->argv[0]);
 				exit(1);
 			}
 		}
