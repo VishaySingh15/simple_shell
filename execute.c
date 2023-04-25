@@ -30,7 +30,7 @@ void execute(cmd *cmd_struct, char *new_path)
 			/* Check if command is recognized by system */
 			if (execve(new_path, cmd_struct->argv, cmd_struct->env) < 0)
 			{
-				home_size = sizeof(cmd_struct->home);
+				home_size = sizeof(*cmd_struct->home);
 				write(STDIN_FILENO, cmd_struct->home, home_size);
 				write(STDIN_FILENO, err, err_size);
 				/*perror(cmd_struct->argv[0]);*/
