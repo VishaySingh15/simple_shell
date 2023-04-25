@@ -74,7 +74,7 @@ char *check_var(char *env_var, char *var)
  * Return: void.
  */
 
-void *handle_path(cmd *cmd_struct, char *checkpath)
+void handle_path(cmd *cmd_struct, char *checkpath)
 {
 	int count = 0;
 
