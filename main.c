@@ -27,6 +27,7 @@ int main(int argc, char **argv)
 		command = malloc(100);
 		write(STDIN_FILENO, prompt, nbytes);
 		nread = getline(&command, &line_size, stdin);
+		printf("%s", command);
 		if (nread == -1)
 		{
 			free(command);
