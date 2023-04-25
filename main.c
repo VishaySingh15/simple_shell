@@ -16,9 +16,9 @@ int main(int argc, char **argv)
 	const char *prompt = "myshell> ";
 	size_t nbytes = sizeof(prompt), line_size = 1024;
 
-	if (argc > 1)
+	if (argc == 1)
 	{
-		printf("%s", argv[0]);
+		printf("%s", argv[1]);
 		return (0);
 	}
 	else
