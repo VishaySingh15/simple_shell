@@ -15,7 +15,7 @@ void execute(cmd *cmd_struct, char *newpath)
 
 	printf("Path from execute %s", newpath);
 	home_size = get_len(cmd_struct->home);
-	if (check_file(new_path))
+	if (check_file(newpath))
 	{
 		while ((child_pid = fork()) < 0)
 		{
@@ -26,7 +26,7 @@ void execute(cmd *cmd_struct, char *newpath)
 		if (child_pid == 0)
 		{
 			/* Check if command is recognized by system */
-			if (execve(new_path, cmd_struct->argv, cmd_struct->env) < 0)
+			if (execve(newpath, cmd_struct->argv, cmd_struct->env) < 0)
 			{
 				write(STDIN_FILENO, cmd_struct->home, home_size);
 				write(STDIN_FILENO, err, err_size);
@@ -41,7 +41,7 @@ void execute(cmd *cmd_struct, char *newpath)
 			wait(&child_pid);
 		}
 	}
-	else if (execve(new_path, cmd_struct->argv, NULL) < 0)
+	else if (execve(newpath, cmd_struct->argv, NULL) < 0)
 	{
 		write(STDIN_FILENO, cmd_struct->home, home_size);
 		write(STDIN_FILENO, err, err_size);
