@@ -21,7 +21,7 @@ void execute(cmd *cmd_struct, char *new_path)
 	{
 		while ((child_pid = fork()) < 0)
 		{
-			perror("fork error);
+			perror("fork error");
 			exit(1);
 		}
 		/* In child process therefore, execute command */
