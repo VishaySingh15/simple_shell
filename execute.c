@@ -14,9 +14,10 @@ void execute(cmd *cmd_struct, char *new_path)
 {
 	pid_t child_pid;
 	char err[] = ": 1: ", home[] = cmd_struct->home;
-	size_t err_size = sizeof(err), home_size = sizeof(home);;
+	size_t err_size = sizeof(err), home_size;
 	/*char *file_path = cmd_struct->argv[0];*/
 
+	home_size = get_len(cmd_struct->home);
 	if (check_file(new_path))
 	{
 		while ((child_pid = fork()) < 0)
@@ -45,7 +46,6 @@ void execute(cmd *cmd_struct, char *new_path)
 	}
 	else if (execve(new_path, cmd_struct->argv, NULL) < 0)
 	{
-		home_size = sizeof(cmd_struct->home);
 		write(STDIN_FILENO, cmd_struct->home, home_size);
 		write(STDIN_FILENO, err, err_size);
 		/*perror(cmd_struct->argv[0]);*/
