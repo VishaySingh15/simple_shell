@@ -76,15 +76,15 @@ char *check_var(char *env_var, char *var)
 
 char *handle_path(cmd *cmd_struct)
 {
-	char *new_path, checkpath[20] = "/bin/";
+	char checkpath[20] = "/bin/";
 	int count = 0;
 
 	while (count < 4)
 	{
 		if (cmd_struct->argv[0][count] != checkpath[count])
 		{
-			new_path = _strcat(checkpath, cmd_struct->argv[0]);
-			printf("new_path from handle path function %s", new_path);
+			checkpath = _strcat(checkpath, cmd_struct->argv[0]);
+			printf("new_path from handle path function %s", checkpath);
 			return (checkpath);
 		}
 		count++;
