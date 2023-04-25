@@ -33,7 +33,7 @@ void execute(cmd *cmd_struct, char *new_path)
 				home_size = sizeof(cmd_struct->home);
 				write(STDIN_FILENO, cmd_struct->home, home_size);
 				write(STDIN_FILENO, err, err_size);
-				perror(cmd_struct->argv[0]);
+				/*perror(cmd_struct->argv[0]);*/
 				exit(1);
 			}
 		}
