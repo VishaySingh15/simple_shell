@@ -15,6 +15,7 @@ void execute(cmd *cmd_struct, char *new_path)
 	pid_t child_pid;
 	/*char *file_path = cmd_struct->argv[0];*/
 
+	printf("2%s\n", new_path);
 	if (check_file(new_path))
 	{
 		while ((child_pid = fork()) < 0)
