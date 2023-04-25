@@ -6,6 +6,13 @@
 
 void my_exit(cmd *cmd_struct)
 {
+	int count = 0;
+
+	while (cmd_struct->argv[count])
+	{
+		free(cmd_struct->argv[count]);
+		count++;
+	}
 	free(cmd_struct);
 	exit(0);
 }
