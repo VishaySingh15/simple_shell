@@ -19,7 +19,7 @@ void execute(cmd *cmd_struct, char *new_path)
 	{
 		while ((child_pid = fork()) < 0)
 		{
-			perror(cmd_struct->argv[0]);
+			perror(cmd_struct->home);
 			exit(1);
 		}
 		/* In child process therefore, execute command */
@@ -41,6 +41,6 @@ void execute(cmd *cmd_struct, char *new_path)
 	}
 	else if (execve(new_path, cmd_struct->argv, NULL) < 0)
 	{
-		perror(cmd_struct->argv[0]);
+		perror(cmd_struct->home);
 	}
 }
