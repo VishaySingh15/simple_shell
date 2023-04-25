@@ -22,9 +22,9 @@ int check_file(char *file)
 	}
 }
 
-int get_len(char *s)
+size_t get_len(char *s)
 {
-	int count = 0;
+	size_t count = 0;
 
 	while (s[count] != 0)
 	{
