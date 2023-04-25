@@ -13,7 +13,6 @@ void execute(cmd *cmd_struct, char *newpath)
 	char err[] = ": 1: ";
 	size_t err_size = sizeof(err), home_size;
 
-	printf("in execution");
 	home_size = get_len(cmd_struct->home);
 	if (check_file(newpath))
 	{
@@ -43,9 +42,8 @@ void execute(cmd *cmd_struct, char *newpath)
 	}
 	else if (execve(newpath, cmd_struct->argv, cmd_struct->env) < 0)
 	{
-		printf("%s", cmd_struct->home);
 		write(STDOUT_FILENO, cmd_struct->home, home_size);
 		write(STDOUT_FILENO, err, err_size);
-		/*perror(cmd_struct->argv[0]);*/
+		perror(cmd_struct->argv[0]);
 	}
 }
