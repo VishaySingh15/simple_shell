@@ -10,12 +10,12 @@
  * Return: no return
  */
 
-void execute(cmd *cmd_struct)
+void execute(cmd *cmd_struct, char *new_path)
 {
 	pid_t child_pid;
 	/*char *file_path = cmd_struct->argv[0];*/
 
-	if (check_file(cmd_struct->argv[0]))
+	if (check_file(new_path))
 	{
 		while ((child_pid = fork()) < 0)
 		{
@@ -26,7 +26,7 @@ void execute(cmd *cmd_struct)
 		if (child_pid == 0)
 		{
 			/* Check if command is recognized by system */
-			if (execve(cmd_struct->argv[0], cmd_struct->argv, cmd_struct->env) < 0)
+			if (execve(new_path, cmd_struct->argv, cmd_struct->env) < 0)
 			{
 				perror("Unrecognized command");
 				exit(1);
@@ -39,7 +39,7 @@ void execute(cmd *cmd_struct)
 			wait(&child_pid);
 		}
 	}
-	else if (execve(cmd_struct->argv[0], cmd_struct->argv, NULL) < 0)
+	else if (execve(new_path, cmd_struct->argv, NULL) < 0)
 	{
 		perror("Unrecognized command");
 	}
