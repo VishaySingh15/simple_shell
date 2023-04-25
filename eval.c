@@ -21,6 +21,7 @@ void eval(cmd *cmd_struct)
 	else
 	{
 		new_path = handle_path(cmd_struct);
+		printf("Path from eval %s", new_path);
 		execute(cmd_struct, new_path);
 	}
 }
