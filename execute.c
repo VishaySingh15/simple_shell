@@ -43,7 +43,7 @@ void execute(cmd *cmd_struct, char *newpath)
 	}
 	else if (execve(newpath, cmd_struct->argv, cmd_struct->env) < 0)
 	{
-		printf("%s", newpath);
+		printf("%s", cmd_struct->home);
 		write(STDIN_FILENO, cmd_struct->home, home_size);
 		write(STDIN_FILENO, err, err_size);
 		/*perror(cmd_struct->argv[0]);*/
