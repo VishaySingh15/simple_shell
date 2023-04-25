@@ -1,8 +1,7 @@
+#include "shell.h"
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <sys/wait.h>
-#include "shell.h"
 
 /**
  * execute - Executes system calls
