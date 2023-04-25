@@ -46,6 +46,6 @@ void execute(cmd *cmd_struct, char *newpath)
 		printf("File wasn't found");
 		write(STDIN_FILENO, cmd_struct->home, home_size);
 		write(STDIN_FILENO, err, err_size);
-		perror(cmd_struct->argv[0]);
+		/*perror(cmd_struct->argv[0]);*/
 	}
 }
