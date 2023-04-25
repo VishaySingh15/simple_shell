@@ -9,7 +9,7 @@
 
 void eval(cmd *cmd_struct)
 {
-	char *new_p;
+	char checkpath[20] = "/bin/";
 
 	void (*func)(cmd *cmd_struct) = is_builtin(cmd_struct->argv[0]);
 
@@ -19,8 +19,8 @@ void eval(cmd *cmd_struct)
 	}
 	else
 	{
-		new_p = handle_path(cmd_struct);
-		printf("Path from eval %s", new_p);
+		handle_path(cmd_struct, checkpath);
+		printf("Path from eval %s", checkpath);
 		execute(cmd_struct, new_p);
 	}
 }
