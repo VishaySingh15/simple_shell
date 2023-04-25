@@ -9,13 +9,17 @@
  * Return: void.
  */
 
-int main(void)
+int main(int argc, char **argv)
 {
 	int nread;
 	char *command;
 	const char *prompt = "myshell> ";
 	size_t nbytes = sizeof(prompt), line_size = 1024;
 
+	if (argc > 1)
+	{
+		exit (0);
+	}
 	while (1)
 	{
 		command = malloc(100);
@@ -30,7 +34,7 @@ int main(void)
 		{
 			command[nread - 1] = '\0';
 			if (command)
-				parse(command, environ);
+				parse(command, environ, argv[0]);
 			free(command);
 		}
 	}
