@@ -74,22 +74,18 @@ char *check_var(char *env_var, char *var)
  * Return: void.
  */
 
-char *handle_path(cmd *cmd_struct)
+void *handle_path(cmd *cmd_struct, char *checkpath)
 {
-	char *new_path, checkpath[20] = "/bin/";
 	int count = 0;
 
 	while (count < 4)
 	{
 		if (cmd_struct->argv[0][count] != checkpath[count])
 		{
-			new_path = _strcat(checkpath, cmd_struct->argv[0]);
-			printf("new_path from handle path function %s", checkpath);
-			return (new_path);
+			_strcat(checkpath, cmd_struct->argv[0]);
 		}
 		count++;
 	}
-	return (cmd_struct->argv[0]);
 }
 
 /**
@@ -100,7 +96,7 @@ char *handle_path(cmd *cmd_struct)
  * Return: dest - string pointer to destination
  */
 
-char *_strcat(char *dest, char *src)
+void _strcat(char *dest, char *src)
 {
 	int len_dest = 0, len_src = 0;
 
@@ -115,5 +111,4 @@ char *_strcat(char *dest, char *src)
 		len_src++;
 	}
 	dest[len_dest] = 0;
-	return (dest);
 }
