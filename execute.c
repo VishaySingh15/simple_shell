@@ -3,6 +3,7 @@
 /**
  * execute - Executes system calls
  * @cmd_struct: command structure
+ * @newpath: path of file
  * Return: no return
  */
 
