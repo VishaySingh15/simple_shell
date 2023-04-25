@@ -1,6 +1,4 @@
 #include "shell.h"
-#include <sys/stat.h>
-#include <sys/types.h>
 
 /**
  * check_file - checks the file.
