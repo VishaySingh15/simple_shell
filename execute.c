@@ -41,8 +41,9 @@ void execute(cmd *cmd_struct, char *newpath)
 			wait(&child_pid);
 		}
 	}
-	else if (execve(newpath, cmd_struct->argv, NULL) < 0)
+	else if (execve(newpath, cmd_struct->argv, cmd_struct->env) < 0)
 	{
+		printf("File wasn't found");
 		write(STDIN_FILENO, cmd_struct->home, home_size);
 		write(STDIN_FILENO, err, err_size);
 		perror(cmd_struct->argv[0]);
