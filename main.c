@@ -12,7 +12,7 @@
 int main(void)
 {
 	int nread;
-	char command[100];
+	char *command = malloc(0);
 	const char *prompt = "myshell> ";
 	size_t nbytes = sizeof(prompt), line_size = 1024;
 
