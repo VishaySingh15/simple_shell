@@ -28,7 +28,7 @@ void execute(cmd *cmd_struct, char *new_path)
 			/* Check if command is recognized by system */
 			if (execve(new_path, cmd_struct->argv, cmd_struct->env) < 0)
 			{
-				perror("Unrecognized command");
+				perror("Unrecognized");
 				exit(1);
 			}
 		}
