@@ -37,6 +37,7 @@ void parse(char *command, char **env, char *home)
 	 * printf("%s\n", cmd_struct->argv[count]);
 	 * count++;}
 	*/
+	printf("parsed without errors");
 	eval(cmd_struct);
 	free(cmd_struct);
 }
