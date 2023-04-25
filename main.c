@@ -6,8 +6,8 @@
 
 /**
  * main - Entry point
- * @argc - number of arguments
- * array of pointers to arguments
+ * @argc: number of arguments
+ * @argv: array of pointers to arguments
  * Return: void.
  */
 
