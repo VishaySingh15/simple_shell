@@ -83,6 +83,7 @@ void handle_path(cmd *cmd_struct, char *checkpath)
 		if (cmd_struct->argv[0][count] != checkpath[count])
 		{
 			_strcat(checkpath, cmd_struct->argv[0]);
+			break;
 		}
 		count++;
 	}
