@@ -9,26 +9,34 @@
  * Return: void.
  */
 
-int main(void)
+int main(int argc, char **argv)
 {
 	int nread;
 	char *command =  malloc(3);
 	const char *prompt = "myshell> ";
 	size_t nbytes = sizeof(prompt), line_size = 1024;
 
-	while (1)
+	if (argc > 1)
 	{
-		write(STDIN_FILENO, prompt, nbytes);
-		nread = getline(&command, &line_size, stdin);
-		if (nread == -1)
+		printf("Yes it is");
+	}
+	else
+	{
+		while (1)
 		{
-			return (0);
-		}
-		else if (nread > 1)
-		{
-			command[nread - 1] = '\0';
-			if (command)
-				parse(command, environ);
+			write(STDIN_FILENO, prompt, nbytes);
+			nread = getline(&command, &line_size, stdin);
+			if (nread == -1)
+			{
+				return (0);
+			}
+			else if (nread > 1)
+			{
+				command[nread - 1] = '\0';
+				if (command)
+					parse(command, environ);
+			}
 		}
 	}
+		
 }
