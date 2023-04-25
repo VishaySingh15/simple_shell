@@ -13,7 +13,7 @@
 void execute(cmd *cmd_struct, char *new_path)
 {
 	pid_t child_pid;
-	char *err = ": 1: ";
+	char err[] = ": 1: ";
 	size_t err_size = sizeof(err), home_size;
 	/*char *file_path = cmd_struct->argv[0];*/
 
