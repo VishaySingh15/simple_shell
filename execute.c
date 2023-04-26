@@ -23,10 +23,8 @@ void execute(cmd *cmd_struct, char *newpath)
 			perror("fork error");
 			exit(1);
 		}
-		/* In child process therefore, execute command */
 		if (child_pid == 0)
 		{
-			/* Check if command is recognized by system */
 			if (execve(newpath, cmd_struct->argv, cmd_struct->env) < 0)
 			{
 				write(STDIN_FILENO, cmd_struct->home, home_size);
@@ -35,10 +33,8 @@ void execute(cmd *cmd_struct, char *newpath)
 				exit(1);
 			}
 		}
-		/* I am in parent process */
 		else
 		{
-			/* Wait for child to finish */
 			wait(&child_pid);
 		}
 	}
@@ -49,6 +45,5 @@ void execute(cmd *cmd_struct, char *newpath)
 		write(STDOUT_FILENO, cmd_struct->argv[0], comm_size);
 		write(STDOUT_FILENO, err2, err2_size);
 		write(STDOUT_FILENO, not_found, f_size);
-		/*perror(cmd_struct->argv[0]);*/
 	}
 }
