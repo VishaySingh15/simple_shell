@@ -80,14 +80,17 @@ char *handle_path(cmd *cmd_struct, char *checkpath)
 	int count = 0;
 	char *new_path;
 
-	while (count < 4)
+	if (cmd_struct->argv[0][0] != '.')
 	{
-		if (cmd_struct->argv[0][count] != checkpath[count])
+		while (count < 4)
 		{
-			new_path = _strcat(checkpath, cmd_struct->argv[0]);
-			return (new_path);
+			if (cmd_struct->argv[0][count] != checkpath[count])
+			{
+				new_path = _strcat(checkpath, cmd_struct->argv[0]);
+				return (new_path);
+			}
+			count++;
 		}
-		count++;
 	}
 	return (cmd_struct->argv[0]);
 }
