@@ -42,4 +42,8 @@ void parse(char *command, char **env, char *home)
 		eval(cmd_struct);
 		free(cmd_struct);
 	}
+	else
+	{
+		exit (0);
+	}
 }
