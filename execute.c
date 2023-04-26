@@ -28,9 +28,11 @@ void execute(cmd *cmd_struct, char *newpath)
 		{
 			if (execve(newpath, cmd_struct->argv, cmd_struct->env) < 0)
 			{
-				write(STDIN_FILENO, cmd_struct->home, home_size);
-				write(STDIN_FILENO, err, err_size);
-				perror(cmd_struct->argv[0]);
+				write(STDOUT_FILENO, cmd_struct->home, home_size);
+				write(STDOUT_FILENO, err, err_size);
+				write(STDOUT_FILENO, cmd_struct->argv[0], comm_size);
+				write(STDOUT_FILENO, err2, err2_size);
+				write(STDOUT_FILENO, not_found, f_size);
 				exit(1);
 			}
 		}
