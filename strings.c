@@ -77,20 +77,27 @@ char *check_var(char *env_var, char *var)
 
 char *handle_path(cmd *cmd_struct, char *checkpath)
 {
-	int count = 0;
-	char *new_path;
+	int env_count = 0, letter_count = 0;
+	char *new_path, *env_path;
 
-	if (cmd_struct->argv[0][0] != '.')
+	env_path = get_env_var(cmd_struct->env, "PATH");
+	printf("Env path %s", env_path);
+	while (env_path[env_count] != 0 && cmd_struct->argv[0][0] != '.')
 	{
-		while (count < 4)
+		if (checkpath[letter_count] == env_path[env_count])
 		{
-			if (cmd_struct->argv[0][count] != checkpath[count])
+			letter_count++;
+			if (letter_count == 4)
 			{
 				new_path = _strcat(checkpath, cmd_struct->argv[0]);
 				return (new_path);
 			}
-			count++;
 		}
+		else
+		{
+			letter_count = 0;
+		}
+		env_count++;
 	}
 	return (cmd_struct->argv[0]);
 }
