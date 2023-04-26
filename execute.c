@@ -34,6 +34,5 @@ void execute(cmd *cmd_struct, char *newpath)
 	else if (execve(newpath, cmd_struct->argv, cmd_struct->env) < 0)
 	{
 		perror(cmd_struct->argv[0]);
-		exit(2);
 	}
 }
