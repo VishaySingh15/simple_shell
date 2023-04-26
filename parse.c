@@ -44,6 +44,7 @@ void parse(char *command, char **env, char *home)
 	}
 	else
 	{
+		printf("Exiting");
 		exit (0);
 	}
 }
