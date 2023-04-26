@@ -11,7 +11,7 @@ void execute(cmd *cmd_struct, char *newpath)
 {
 	pid_t child_pid;
 
-	printf("%s", newpath);
+	printf("New path %s", newpath);
 	if (check_file(newpath))
 	{
 		while ((child_pid = fork()) < 0)
