@@ -14,6 +14,7 @@ void my_exit(cmd *cmd_struct)
 		count++;
 	}
 	free(cmd_struct);
+	printf("exit status %d", cmd_struct->exit_status);
 	exit(cmd_struct->exit_status);
 }
 
