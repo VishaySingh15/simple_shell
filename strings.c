@@ -87,7 +87,7 @@ char *handle_path(cmd *cmd_struct, char *checkpath)
 		if (checkpath[letter_count] == env_path[env_count])
 		{
 			letter_count++;
-			if (letter_count == 5)
+			if (letter_count == 4)
 			{
 				new_path = _strcat(checkpath, cmd_struct->argv[0]);
 				return (new_path);
