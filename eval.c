@@ -11,9 +11,9 @@ void eval(cmd *cmd_struct)
 {
 	char checkpath[20] = "/bin/", *new_path;
 
+	printf("command sent to eval %s", cmd_struct->argv[0]);
 	void (*func)(cmd *cmd_struct) = is_builtin(cmd_struct->argv[0]);
 
-	printf("command sent to eval %s", cmd_struct->argv[0]);
 	if (func)
 	{
 		func(cmd_struct);
