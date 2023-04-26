@@ -31,6 +31,7 @@ void parse(char *command, char **env, char *home)
 	}
 	cmd_struct->env = env;
 	cmd_struct->home = home;
+	cmd_struct->exit_status = 0;
 	/**
 	 * Ensure Command is tokenized
 	 * while (cmd_struct->argv[count] != NULL){
@@ -44,7 +45,6 @@ void parse(char *command, char **env, char *home)
 	}
 	else
 	{
-		printf("Exiting");
 		exit (0);
 	}
 }
