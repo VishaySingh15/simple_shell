@@ -35,8 +35,8 @@ void my_env(cmd *cmd_struct)
 			count_letters++;
 		}
 		nbytes_environ = count_letters;
-		write(STDIN_FILENO, cmd_struct->env[count], nbytes_environ);
+		write(STDOUT_FILENO, cmd_struct->env[count], nbytes_environ);
 		count++;
-		write(STDIN_FILENO, &new_line, 1);
+		write(STDOUT_FILENO, &new_line, 1);
 	}
 }
