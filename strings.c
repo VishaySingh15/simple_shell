@@ -80,25 +80,28 @@ char *handle_path(cmd *cmd_struct, char *checkpath)
 	int env_count = 0, letter_count = 0;
 	char *new_path, *env_path;
 
-	env_path = get_env_var(cmd_struct->env, "PATH");
-	if (env_path)
+	if (cmd_struct->env)
 	{
-		while (env_path[env_count] != 0 && cmd_struct->argv[0][0] != '.' && cmd_struct->argv[0][0] != '/')
+		env_path = get_env_var(cmd_struct->env, "PATH");
+		if (env_path)
 		{
-			if (checkpath[letter_count] == env_path[env_count])
+			while (env_path[env_count] != 0 && cmd_struct->argv[0][0] != '.' && cmd_struct->argv[0][0] != '/')
 			{
-				letter_count++;
-				if (letter_count == 4)
+				if (checkpath[letter_count] == env_path[env_count])
 				{
-					new_path = _strcat(checkpath, cmd_struct->argv[0]);
-					return (new_path);
+					letter_count++;
+					if (letter_count == 4)
+					{
+						new_path = _strcat(checkpath, cmd_struct->argv[0]);
+						return (new_path);
+					}
 				}
+				else
+				{
+					letter_count = 0;
+				}
+				env_count++;
 			}
-			else
-			{
-				letter_count = 0;
-			}
-			env_count++;
 		}
 	}
 	return (cmd_struct->argv[0]);
