@@ -14,7 +14,7 @@
 int main(int argc, char **argv)
 {
 	int nread;
-	char *command;
+	char *command = malloc(100);
 	const char *prompt = "myshell> ";
 	size_t nbytes = sizeof(prompt), line_size = 1024;
 
@@ -24,7 +24,7 @@ int main(int argc, char **argv)
 	}
 	while (1)
 	{
-		command = malloc(100);
+		
 		write(STDIN_FILENO, prompt, nbytes);
 		nread = getline(&command, &line_size, stdin);
 		if (nread == -1)
