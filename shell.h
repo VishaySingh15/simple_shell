@@ -14,6 +14,7 @@ extern char **environ;
 /**
  * struct cmd - holds all arguments and is most important.
  * cmd: command.
+ * @home: home.
  * @argc: number of args
  * @argv: array of pointers to args
  * @env: array of pointers to env vars
