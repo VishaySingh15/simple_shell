@@ -11,7 +11,7 @@
  * Return: void.
  */
 
-int main(int argc, char **argv, char **env)
+int main(int argc, char **argv)
 {
 	int nread;
 	char *command;
@@ -36,7 +36,7 @@ int main(int argc, char **argv, char **env)
 		{
 			command[nread - 1] = '\0';
 			if (command)
-				parse(command, env, argv[0]);
+				parse(command, environ, argv[0]);
 			free(command);
 		}
 	}
