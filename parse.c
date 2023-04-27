@@ -44,6 +44,6 @@ void parse(char *command, char **env, char *home)
 	}
 	else
 	{
-		exit (0);
+		exit(0);
 	}
 }
