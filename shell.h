@@ -43,7 +43,7 @@ typedef struct builtins
 void parse(char *command, char **env, char *home);
 void execute(struct cmd *cmd_struct, char *new_path);
 void (*is_builtin(char *command))(cmd *cmd_struct);
-void my_cd(cmd *cmd_struct, char **environ);
+void my_cd(cmd *cmd_struct);
 void my_exit(cmd *cmd_struct);
 void my_env(cmd *cmd_struct);
 void eval(cmd *cmd_struct);
