@@ -17,6 +17,7 @@ int main(int argc, char **argv)
 	char *command;
 	const char *prompt = "myshell> ";
 	size_t nbytes = sizeof(prompt), line_size = 1024;
+	char **env;
 
 	if (argc > 1)
 	{
@@ -36,7 +37,7 @@ int main(int argc, char **argv)
 		{
 			command[nread - 1] = '\0';
 			if (command)
-				parse(command, environ, argv[0]);
+				parse(command, env, argv[0]);
 			free(command);
 		}
 	}
