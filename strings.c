@@ -83,7 +83,8 @@ char *handle_path(cmd *cmd_struct, char *checkpath)
 	env_path = get_env_var(cmd_struct->env, "PATH");
 	if (env_path)
 	{
-		while (env_path[env_count] != 0 && cmd_struct->argv[0][0] != '.' && cmd_struct->argv[0][0] != '/')
+		while (env_path[env_count] != 0 && cmd_struct->argv[0][0] != '.'
+		&& cmd_struct->argv[0][0] != '/')
 		{
 			if (checkpath[letter_count] == env_path[env_count])
 			{
