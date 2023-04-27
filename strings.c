@@ -82,6 +82,7 @@ char *handle_path(cmd *cmd_struct, char *checkpath)
 
 	if (cmd_struct->env)
 	{
+		printf("Found env variables");
 		env_path = get_env_var(cmd_struct->env, "PATH");
 		if (env_path)
 		{
