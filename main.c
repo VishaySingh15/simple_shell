@@ -36,7 +36,7 @@ int main(int argc, char **argv)
 		{
 			command[nread - 1] = '\0';
 			if (command)
-				parse(command, env, argv[0]);
+				parse(command, environ, argv[0]);
 			free(command);
 		}
 	}
