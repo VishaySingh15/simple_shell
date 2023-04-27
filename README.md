@@ -8,7 +8,10 @@ In this project we have Created a simple shell which should:
 - The command lines are made only of one word. No arguments will be passed to programs.
 - If an executable cannot be found, print an error message and display the prompt again.
 - Handle errors.
-- Handle the “end of file” condition (Ctrl+D).
+- Handle the “end of file” condition (Ctrl+D)
+
+
+	.
 
 Simple shell 0.1 + should:
 - Handle command lines with arguments.
