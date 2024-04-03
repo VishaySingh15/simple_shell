@@ -24,4 +24,3 @@ Simple shell 0.3 + should:
 
 Simple shell 0.4 + should:
 - Implement the env built-in, that prints the current environment.
-- Extra Line
